@@ -2,7 +2,7 @@
 
 Le controller reçoit le requéte et et appelle les resources appropriées
 
-## Controller
+## CONTROLLER
 
 - Reçoit la requête et appelle les ressource appropriées
 - Responsable de Retourner une réponse avec l'aide Modele et de la Vue
