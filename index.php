@@ -17,15 +17,19 @@
     <nav>
         <h2 class="titreMenu">menu de navigation</h2>
         <ul>
-            <li class="liste"><a href="#" class="item">Accueil</a></li>
-            <li class="liste"><a href="#" class="item">PAGE-2</a></li>
-            <li class="liste"><a href="#" class="item">PAGE-3</a></li>
-            <li class="liste"><a href="#" class="item">PAGE-4</a></li>
+            <li class="liste"><a href="index.php" class="item">Accueil</a></li>
+            <li class="liste"><a href="vue/page2.php" class="item">PAGE-2</a></li>
+            <li class="liste"><a href="vue/page3.php" class="item">PAGE-3</a></li>
+            <li class="liste"><a href="vue/page4.php" class="item">PAGE-4</a></li>
         </ul>
     </nav>
 
     <main>
-        <h1>Contenu</h1>
+        <h1>h1 main page index</h1>
+
+        <?php
+        require "vue/demarage.php";
+        ?>
 
     </main>
 
