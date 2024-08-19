@@ -10,7 +10,7 @@ class CreationBD
 
             $creer = $_POST['creer'];
 
-            echo "<p> La demende de création de basse de doner et bien resue</p>";
+            echo "<p> La demende de création de base de doner et bien resue</p>";
         }
         if (isset($creer)) {
 
