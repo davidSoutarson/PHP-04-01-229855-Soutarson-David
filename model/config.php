@@ -5,7 +5,7 @@ $user = 'root';
 $password = '';
 $charset = 'utf8mb4';
 
-//---------------------------------------------------
+//--------------------a utiliset dans une class-------------------------------
 
 // Créer une base de données (si elle n'existe pas déjà)
 $cerat_dsn = "mysql:host=$host;charset=$charset";
@@ -24,7 +24,7 @@ try {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-//---------------------------------------------------
+//---------------------a utiliset dans une class------------------------------
 
 // Créer une connexion à la base de données
 $conect_dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
