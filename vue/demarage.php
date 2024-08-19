@@ -11,12 +11,13 @@ require "model/classCreerBD.php";
 
         echo  $formDemarage->submit();
         ?>
-        <h2>Ci-dessous afiche l'etat de basse de donnée</h2>
-        <?php
-        $creationBD = new CreationBD();
+    </form>
+    <h2>Ci-dessous afiche l'etat de basse de donnée</h2>
+    <?php
+    $creationBD = new CreationBD();
 
-        echo $creationBD->testCreerBD();
+    echo $creationBD->testCreerBD();
 
-        echo $creationBD->verifDemandCrea();
-        ?>
+    echo $creationBD->verifDemandCrea();
+    ?>
 </article>
