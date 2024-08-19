@@ -20,7 +20,7 @@ class FormDemarage
     public function submit()
     {
         return $this->p_bt_creer(
-            '<button id="bt_creer" type="submit" name="creer" value = "creat"> Creer la Base de donnée </button>'
+            '<button id="bt_creer" type="submit" name="creer" value = "creer"> Creer la Base de donnée </button>'
         );
     }
 }

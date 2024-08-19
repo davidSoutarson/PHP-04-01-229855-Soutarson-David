@@ -2,21 +2,22 @@
 class CreationBD
 {
 
-    public function testCreerBD()
-    {
-        return var_dump($_POST);
-    }
 
-    public function verifDemandCrea()
+
+    public function verifCreerBD()
     {
         if (!empty($_POST['creer']) && isset($_POST['creer'])) {
 
             $creer = $_POST['creer'];
-            $info = "<p> La demende de création de basse de doner et bien paser </p>";
-            return $info;
+
+            echo "<p> La demende de création de basse de doner et bien resue</p>";
+        }
+        if (isset($creer)) {
+
+            echo "<p> La base de donne peut etre créer! </p>";
         } else {
 
-            return "<p> En atente de demende de création de base de donnée</p>";
+            echo "<p> En atente de demende de création de base de donnée</p>";
         }
     }
 }
