@@ -1,13 +1,13 @@
 <?php
 class CreationBD
 {
-    $cerat_dsn;
-    $user; 
-    $password;
+    public $cerat_dsn;
+    public $user;
+    public $password;
 
-    $cerat_options;
+    public $cerat_options;
 
-    public function creerBD()
+    public function creerBD($dsn, $user, $password, $cerat_options)
     {
 
         try {
