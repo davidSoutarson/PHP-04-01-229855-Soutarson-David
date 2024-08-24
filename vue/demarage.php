@@ -16,7 +16,6 @@ require "model/classCreerBD.php";
     <?php
     $creationBD = new CreationBD();
 
-
     $creationBD->verifCreerBD();
 
     ?>

@@ -1,45 +1,55 @@
 <?php
+require "config.php";
+
 class CreationBD
 {
-    public $cerat_dsn;
-    public $user;
-    public $password;
+    // Propriétés de la classe
+    private $dsn;
+    private $user;
+    private $password;
+    private $options;
 
-    public $cerat_options;
 
-    public function creerBD($dsn, $user, $password, $cerat_options)
+
+    // Constructeur de la classe
+    public function __construct()
     {
+        // Initialisation des propriétés avec les constantes définies dans config.php
+        $this->dsn = 'mysql:host=' . HOST . ';charset=' . CHARSET;
+        $this->user = USER;
+        $this->password = PASSWORD;
+        $this->options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+    }
 
+    // Méthode pour créer la base de données
+    public function creerBD()
+    {
         try {
-            $pdo = new PDO($dsn, $user, $password, $cerat_options);
+            $pdo = new PDO($this->dsn, $this->user, $this->password, $this->options);
 
-            $pdo->exec("CREATE DATABASE IF NOT EXISTS devoire_ecole CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-            echo "Base de données créée avec succès.";
+            // Création de la base de données
+            $pdo->exec("CREATE DATABASE IF NOT EXISTS " . DB_NAME . " CHARACTER SET " . CHARSET . " COLLATE utf8mb4_unicode_ci");
+            echo "<p>2 Base de données '" . DB_NAME . "' créée avec succès.<p>";
         } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+            // Afficher un message d'erreur personnalisé
+            echo "Erreur : Impossible de créer la base de données. Détails : " . $e->getMessage();
         }
     }
 
-
-    /**
-     * verifie la demende de création
-     */
+    // Méthode pour vérifier et créer la base de données si la demande est reçue
     public function verifCreerBD()
     {
         if (!empty($_POST['creer']) && isset($_POST['creer'])) {
+            echo "<p>1 La demande de création de base de données a bien été reçue.</p>";
 
-            $creer = $_POST['creer'];
-
-            echo "<p> La demende de création de base de doner et bien resue</p>";
-        }
-        if (isset($creer)) {
-
-            echo "<p> La base de donne peut etre créer! </p>";
-            //utilisation de la fontion: creerBD()
-
+            // Appel de la méthode pour créer la base de données
+            $this->creerBD();
         } else {
-
-            echo "<p> En atente de demende de création de base de donnée</p>";
+            echo "<p>0 En attente de demande de création de base de données.</p>";
         }
     }
 }
