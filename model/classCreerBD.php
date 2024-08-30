@@ -1,17 +1,35 @@
 <?php
 require "config.php";
 
+/**
+ * class Creation
+ * a besoin Du fichier config.php
+ * Cette class permer de créer la base de donner
+ */
 class CreationBD
 {
-    // Propriétés de la classe
+    /**
+     * @var string Propriétés de la classe isu du fichier config.php
+     */
     private $dsn;
+    /**
+     * @var string Propriétés de la classe isu du fichier config.php
+     */
     private $user;
+    /**
+     * @var string Propriétés de la classe isu du fichier config.php
+     */
     private $password;
+    /**
+     * @var array string Propriétés de la classe dans le contucter de celci
+     */
     private $options;
 
 
 
-    // Constructeur de la classe
+    /**
+     * Constructeur de la classe utilile les contente du fichier config.php
+     */
     public function __construct()
     {
         // Initialisation des propriétés avec les constantes définies dans config.php
@@ -25,7 +43,9 @@ class CreationBD
         ];
     }
 
-    // Méthode pour créer la base de données
+    /**
+     * Méthode pour créer la base de données utiliser par la methode verifCreerBD() 
+     */
     public function creerBD()
     {
         try {

@@ -2,6 +2,8 @@
 require "header.php";
 require "menu.php";
 require "../model/classConextionBD.php";
+require "../model/classFormCRUD.php";
+require '../model/DatabaseSeeder.php'; // Charger la classe de seeding
 ?>
 
 <article class="article">
@@ -10,12 +12,26 @@ require "../model/classConextionBD.php";
     <?php
 
 
-    // Test de la classe ConextionBD
+    //V1 fontionnele
+
     $connexion = new ConextionBD();
     $pdo = $connexion->getPDO();
 
     if ($pdo instanceof PDO) {
+
         echo "<p>L'objet \$pdo est correctement initialisé.<p>";
+        echo ' <p class ="success"> Cocnetion a la base de données réucie </P>';
+
+        $connexion->creerTables(); // Créer les tables
+
+        echo ' <form action="#" method="post">';
+
+        $formCRUD = new FormCRUD($_POST);
+
+        echo  $formCRUD->nouveau('nouveau');
+
+        echo '</form>';
+        $formCRUD->crud_VerifNouveau();
     } else {
         echo "<p>L'objet \$pdo n'est pas correctement initialisé.<p>";
     }

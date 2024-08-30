@@ -28,11 +28,10 @@ class FormCRUD
 
 
     /**
-     * @param array $data Données utiliser par fomulaire
+     * @param array $data Données utiliser par fomulaire crud
      */
-    public function __construct($data)
+    public function __construct($data = array())
     {
-        //constructeur de formDemarage
         $this->data = $data;
     }
 
@@ -69,13 +68,18 @@ class FormCRUD
 
     //etape 3
 
+    private function getValue($index)
+    {
+        return isset($this->data[$index]) ? $this->data[$index] : null;
+    }
+
     /**
      *@return string utilise la métode: p_bt_creer() entoure en html le bouton Creer ecole
      */
-    public function nouveau()
+    public function nouveau($nouveau)
     {
         return $this->p_bt_crudN(
-            '<button id="bt_nouveau" type="submit" name="nouveau" value ="nouveau"> Creer ecole </button>'
+            '<button id="bt_nouveau" type="submit" name="' . $nouveau . '" value ="' . $this->getValue($nouveau) . '"> Creer ecole </button>'
         );
     }
     /**
@@ -95,5 +99,20 @@ class FormCRUD
         return $this->p_bt_crudS(
             '<button id="bt_suprimer" type="submit" name="suprimer" value ="suprimer"> Suprimer ecole </button>'
         );
+    }
+
+    public function crud_VerifNouveau()
+    {
+        var_dump($_POST);
+
+        if (!empty('nouveau') && isset($_POST['nouveau'])) {
+            //cliquer
+            echo "<p> creer !!!! ok</p>";
+
+            $connexion = new ConextionBD(); // Initialiser la connexion à la base de données
+            $seeder = new DatabaseSeeder($connexion->getPDO()); // Initialiser le seeder avec la connexion PDO
+
+            $seeder->run(); // Exécuter le seeding pour remplir la base de données avec des données aléatoires
+        }
     }
 }

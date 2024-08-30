@@ -3,7 +3,6 @@
   padding: 0;
   list-style-type: none;
   text-decoration: none;
-  color: black;
 }
 .en-tete {
   color: rgb(0, 130, 200);
@@ -43,6 +42,12 @@ nav ul {
 
 .test {
   color: red;
+}
+
+.success {
+  border: 1px solid rgb(2, 61, 2);
+  background-color: rgba(106, 233, 110, 0.5);
+  color: green;
 }
 
 footer {
