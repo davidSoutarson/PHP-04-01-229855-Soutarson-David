@@ -103,16 +103,19 @@ class FormCRUD
 
     public function crud_VerifNouveau()
     {
-        var_dump($_POST);
+        # var_dump($_POST);
 
         if (!empty('nouveau') && isset($_POST['nouveau'])) {
             //cliquer
-            echo "<p> creer !!!! ok</p>";
+            echo "<p> 1 GENERE LES DONER <br> 2 Initialiser la connexion à la base de données <br> 3 remplir Les TABLE  </p>";
 
             $connexion = new ConextionBD(); // Initialiser la connexion à la base de données
-            $seeder = new DatabaseSeeder($connexion->getPDO()); // Initialiser le seeder avec la connexion PDO
 
-            $seeder->run(); // Exécuter le seeding pour remplir la base de données avec des données aléatoires
+            ## puis la remplir
+
+            # $remplir = new DatabaseSeeder($connexion->getPDO());
+
+            # $remplir->run();
         }
     }
 }
