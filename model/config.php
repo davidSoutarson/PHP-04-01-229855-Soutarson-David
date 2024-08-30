@@ -2,7 +2,7 @@
 
 /**
  * Le fichier config.php
- * Constante de creation conetion  a la basse de donner : devoire_ecole
+ * Constante de creation conetion a la basse de donner : devoire_ecole
  */
 
 define('HOST', 'localhost');
