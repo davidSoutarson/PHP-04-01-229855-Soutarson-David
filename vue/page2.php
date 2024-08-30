@@ -3,7 +3,7 @@ require "header.php";
 require "menu.php";
 require "../model/classConextionBD.php";
 require "../model/classFormCRUD.php";
-
+# require '..//DatabaseSeeder.php'; // Charger la classe de seeding
 ?>
 
 <article class="article">
@@ -32,7 +32,6 @@ require "../model/classFormCRUD.php";
 
         echo '</form>';
         $formCRUD->crud_VerifNouveau();
-        //v1
     } else {
         echo "<p>L'objet \$pdo n'est pas correctement initialisé.<p>";
     }
