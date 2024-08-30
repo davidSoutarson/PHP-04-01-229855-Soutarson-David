@@ -1,15 +1,35 @@
 <?php
 
-
+/**
+ * Class FormCRUD
+ * Permet de creer trois Bouton de type submit dans formulaire posts
+ */
 class FormCRUD
 {
+    /**
+     * @var array Données du fomulaire
+     */
     private $data;
+
     // etape 1
+
+    /**
+     * @var string Balise et class html nouveau
+     */
     public $tag_p_bt_nouveau = 'p class="p_bt_nouveau"';
+    /**
+     * @var string Balise et class html ajouter
+     */
     public $tag_p_bt_ajouter = 'p class="p_bt_ajouter"';
+    /**
+     * @var string Balise et class html suprimer
+     */
     public $tag_p_bt_suprimer = 'p class="p_bt_suprimer"';
 
 
+    /**
+     * @param array $data Données utiliser par fomulaire
+     */
     public function __construct($data)
     {
         //constructeur de formDemarage
@@ -17,16 +37,30 @@ class FormCRUD
     }
 
     //etape 2
+
+
+    /**
+     *@param $html string code html a entoure uliser dans la métode: nouveau()
+     *@return string 
+     */
     private function p_bt_crudN($html)
     {
         return "<{$this->tag_p_bt_nouveau}>{$html}</{$this->tag_p_bt_nouveau}>";
     }
 
+    /**
+     *@param $html string code html a entoure uliser dans la métode: ajouter()
+     *@return string 
+     */
     private function p_bt_crudA($html)
     {
         return "<{$this->tag_p_bt_ajouter}>{$html}</{$this->tag_p_bt_ajouter}>";
     }
 
+    /**
+     *@param $html string code html a entoure uliser dans la métode: suprimer()
+     *@return string 
+     */
     private function p_bt_crudS($html)
     {
         return "<{$this->tag_p_bt_suprimer}>{$html}</{$this->tag_p_bt_suprimer}>";
@@ -34,20 +68,28 @@ class FormCRUD
 
 
     //etape 3
+
+    /**
+     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Creer ecole
+     */
     public function nouveau()
     {
         return $this->p_bt_crudN(
             '<button id="bt_nouveau" type="submit" name="nouveau" value ="nouveau"> Creer ecole </button>'
         );
     }
-
+    /**
+     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Enregistre
+     */
     public function ajouter()
     {
         return $this->p_bt_crudA(
             '<button id="bt_ajouter" type="submit" name="ajouter" value ="ajouter"> Enregistre ecole </button>'
         );
     }
-
+    /**
+     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Suprimer
+     */
     public function suprimer()
     {
         return $this->p_bt_crudS(
