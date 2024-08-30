@@ -4,6 +4,8 @@ class DatabaseSeeder
 {
     private $pdo;
 
+    public $nombreEleves;
+
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
@@ -19,6 +21,12 @@ class DatabaseSeeder
     private function genererNombreSportifs($nombre_eleves)
     {
         return rand(0, $nombre_eleves); // Génère un nombre aléatoire de sportifs entre 0 et le nombre total d'élèves
+    }
+
+    public function aficheNombreEleves()
+    {
+        $nombre_eleves = $this->genererNombreEleves();
+        return $nombre_eleves; #teste
     }
 
     // Méthode pour insérer des écoles avec des données aléatoires

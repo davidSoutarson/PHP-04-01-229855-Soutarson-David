@@ -3,7 +3,8 @@ require "header.php";
 require "menu.php";
 require "../model/classConextionBD.php";
 require "../model/classFormCRUD.php";
-# require '..//DatabaseSeeder.php'; // Charger la classe de seeding
+#----------------------------------
+require '../model/DatabaseSeeder.php'; // Charger la classe de seeding
 ?>
 
 <article class="article">

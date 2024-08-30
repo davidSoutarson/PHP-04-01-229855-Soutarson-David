@@ -113,7 +113,9 @@ class FormCRUD
 
             ## puis la remplir
 
-            # $remplir = new DatabaseSeeder($connexion->getPDO());
+            $remplir = new DatabaseSeeder($connexion->getPDO());
+
+            echo $remplir->aficheNombreEleves(); #teste
 
             # $remplir->run();
         }
