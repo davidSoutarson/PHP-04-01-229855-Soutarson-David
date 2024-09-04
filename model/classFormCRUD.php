@@ -111,13 +111,33 @@ class FormCRUD
 
             $connexion = new ConextionBD(); // Initialiser la connexion à la base de données
 
-            ## puis la remplir
+            ## puis la genere
+            echo "<h2> Generer le contenue </h2> <hr>";
 
-            $remplir = new DatabaseSeeder($connexion->getPDO());
+            $generer = new GenerData($connexion->getPDO());
 
-            echo $remplir->aficheNombreEleves(); #teste
+            $nomEcoles = $generer->genererNomEcoles();
 
-            # $remplir->run();
+            foreach ($nomEcoles as $key => $value) {
+
+                echo "<p> contenue Table: ecoles :</p> <p> nom_ecole:" . $value . "<p>";
+
+                echo "<p> nombre_eleves " . $generer->genererNombreEleves() . "<p>"; #teste
+
+                echo "<p> nombre_sportifs" . $generer->genererNombreDeSportif() . "<p>"; #teste
+
+                echo '<hr> </br>';
+
+                // ecrie le contenu de dans la base de doner ??
+            }
+
+
+
+            echo "<hr> <hr> <hr>";
+            var_dump($generer);
+
+            ##$remplir
+
         }
     }
 }

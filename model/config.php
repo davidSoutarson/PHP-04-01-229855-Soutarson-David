@@ -6,7 +6,7 @@
  */
 
 define('HOST', 'localhost');
-define('DB_NAME', 'devoire_ecole');
+define('DB_NAME', '01devoire_ecole');
 define('USER', 'root');
 define('PASSWORD', '');
 define('CHARSET', 'utf8mb4');

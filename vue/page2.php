@@ -4,7 +4,7 @@ require "menu.php";
 require "../model/classConextionBD.php";
 require "../model/classFormCRUD.php";
 #----------------------------------
-require '../model/DatabaseSeeder.php'; // Charger la classe de seeding
+require '../model/generData.php';
 ?>
 
 <article class="article">
