@@ -67,11 +67,13 @@ class ConextionBD
         */
 
         // Création de la table `eleves_sportifs`
-        $sql_eleves_sportifs = "
-            CREATE TABLE IF NOT EXISTS eleves_sportifs (
+        $sql_nombre_eleves_pratiquan_1_2_3_sports = "
+            CREATE TABLE IF NOT EXISTS nombre_eleves_pratiquan_1_2_3_sports (
                 id INT(11) AUTO_INCREMENT PRIMARY KEY,
                 ecole_id INT(11) NOT NULL,
-                nombre_sports INT(11) CHECK(nombre_sports IN (1, 2, 3)),
+                n_eleves_pratiquan_1_sports INT(11),
+                n_eleves_pratiquan_2_sports INT(11),
+                n_eleves_pratiquan_3_sports INT(11),
                 FOREIGN KEY (ecole_id) REFERENCES ecoles(id)
             );
         ";
@@ -91,8 +93,8 @@ class ConextionBD
             $this->pdo->exec($sql_ecoles);
             echo "Table 'ecoles' créée avec succès.<br>";
 
-            $this->pdo->exec($sql_eleves_sportifs);
-            echo "Table 'eleves_sportifs' créée avec succès.<br>";
+            $this->pdo->exec($sql_nombre_eleves_pratiquan_1_2_3_sports);
+            echo "Table 'nombre_eleves_pratiquan_1_2_3_sports' créée avec succès.<br>";
 
             $this->pdo->exec($sql_sports);
             echo "Table 'sports' créée avec succès.<br>";

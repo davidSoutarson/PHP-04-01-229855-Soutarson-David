@@ -120,11 +120,11 @@ class FormCRUD
 
             foreach ($nomEcoles as $key => $value) {
 
-                echo "<p> contenue Table: ecoles :</p> <p> nom_ecole:" . $value . "<p>";
+                echo "<p> contenue Table: ecoles: </p> <p> nom_ecole: " . $value . "<p>";
 
-                echo "<p> nombre_eleves " . $generer->genererNombreEleves() . "<p>"; #teste
+                echo "<p> nombre_eleves: " . $generer->genererNombreEleves() . "<p>"; #teste
 
-                echo "<p> nombre_sportifs" . $generer->genererNombreDeSportif() . "<p>"; #teste
+                echo "<p> nombre_sportifs: " . $generer->genererNombreDeSportif() . "<p>"; #teste
 
                 echo '<hr> </br>';
 

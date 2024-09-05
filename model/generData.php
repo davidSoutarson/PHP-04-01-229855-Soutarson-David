@@ -45,4 +45,6 @@ class GenerData
         $this->nomberDeSportifs = rand(0, $this->nombreEleves); // gener le nombre de sportif par rapor au nonbre d'éleve
         return $this->nomberDeSportifs;
     }
+
+    // ecrie le contenu de dans la base de doner ??
 }
