@@ -121,17 +121,35 @@ class FormCRUD
             foreach ($nomEcoles as $key => $value) {
 
                 echo "<p> contenue Table: ecoles: </p> <p> nom_ecole: " . $value . "<p>";
+                $nombre_eleves = $generer->genererNombreEleves();
+                echo "<p> nombre_eleves: " . $nombre_eleves . "<p>"; #teste
 
-                echo "<p> nombre_eleves: " . $generer->genererNombreEleves() . "<p>"; #teste
+                $nombre_sportifs = $generer->genererNombreDeSportif();
+                echo "<p> nombre_sportifs: " . $nombre_sportifs . "<p>"; #teste
 
-                echo "<p> nombre_sportifs: " . $generer->genererNombreDeSportif() . "<p>"; #teste
+                echo '<hr> ';
+
+                // ----------------------
+                echo "<p> contenue Table: nombre_eleves_pratiquan_1_2_3_sports: </p>";
+
+                $nElevePrati_1_Sport = $generer->genererSportifPratiquan1S();
+                echo "<p> nombre éléves pratiquan 1 sport: " . $nElevePrati_1_Sport . "<p>"; #teste
+
+                $nElevePrati_2_Sport = $generer->genererSportifPratiquan2S();
+                echo "<p> nombre éléves pratiquan 2 sport: " . $nElevePrati_2_Sport . "<p>"; #teste
+
+                $nElevePrati_3_Sport = $generer->genererSportifPratiquan3S();
+                echo "<p> nombre éléves pratiquan 3 sport: " . $nElevePrati_3_Sport . "<p>"; #teste
+
+                echo '<hr>';
+
+                echo '<p>?? prochin calcule ?? </p>';
+
+                echo "<p>" . $generer->repartition01() . "</p>";
+
 
                 echo '<hr> </br>';
-
-                // ecrie le contenu de dans la base de doner ??
             }
-
-
 
             echo "<hr> <hr> <hr>";
             var_dump($generer);
