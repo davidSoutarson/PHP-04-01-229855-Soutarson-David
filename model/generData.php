@@ -19,8 +19,6 @@ class GenerData
     private $repartitionSports  = [];
 
 
-
-
     public function __construct(
         $pdo,
         $nomEcoles = [],
@@ -111,65 +109,40 @@ class GenerData
         return $this->nSportifPratiquan3S;
     }
 
-    public function calRepartition123S()
+    private function calculerRepartitionEquivalente($np, $multiplicateur)
     {
+        if ($np >= 5 && $np != 0) {
+            $repartitionEquivalente = ($np * $multiplicateur) / 5;
+            $result = (int) floor($repartitionEquivalente);
 
-        $np1 = $this->nSportifPratiquan1S;
-        $np2 = $this->nSportifPratiquan2S;
-        $np3 = $this->nSportifPratiquan3S;
+            return $result;
+        } elseif ($np < 5 && $np != 0) {
+            $result = ($np * $multiplicateur) / $np;
 
-        if ($np1 >= 5 && $np1 != 0) {
-
-            $repartitionEquivalente1S = $np1 / 5;
-            $this->repartitionEquivalente1S = (int) floor($repartitionEquivalente1S);
-
-            echo "<p>" . $this->repartitionEquivalente1S . "</p>";
-        }
-        if ($np1 < 5 && $np1 != 0) {
-
-            $this->repartitionEquivalente1S = $np1 / $np1;
-
-            echo "<p> ! infrieur a 5: " . $this->repartitionEquivalente1S . "</p>";
+            return $result;
         } else {
-            $this->repartitionEquivalente3S = 0;
+            return 0;
         }
+    }
 
-        #____________________________________________________________________________
+    // Utilisation de la fonction pour chaque $np
 
+    public function repE1()
+    {
+        $this->repartitionEquivalente1S = $this->calculerRepartitionEquivalente($this->nSportifPratiquan1S, 1);
+        return $this->repartitionEquivalente1S;
+    }
 
-        if ($np2 >= 5 && $np2 != 0) {
-            $repartitionEquivalente2S = ($np2 * 2) / 5;
-            $this->repartitionEquivalente2S = (int) floor($repartitionEquivalente2S);
+    public function repE2()
+    {
+        $this->repartitionEquivalente2S = $this->calculerRepartitionEquivalente($this->nSportifPratiquan2S, 2);
+        return $this->repartitionEquivalente2S;
+    }
 
-            echo "<p> r2: " . $this->repartitionEquivalente2S . "</p>";
-        }
-        if ($np2 < 5 && $np2 != 0) {
+    public function repE3()
+    {
+        $this->repartitionEquivalente3S = $this->calculerRepartitionEquivalente($this->nSportifPratiquan3S, 3);
 
-            $this->repartitionEquivalente2S = ($np2 * 2) / $np2;
-
-            echo "<p> ! r2 infrieur a 5: " . $this->repartitionEquivalente1S . "</p>";
-        } else {
-            $this->repartitionEquivalente2S = 0;
-        }
-
-        #____________________________________________________________________________
-
-
-        if ($np3 >= 5 && $np3 != 0) {
-            $repartitionEquivalente3S = ($np3 * 2) / 5;
-            $this->repartitionEquivalente3S = (int) floor($repartitionEquivalente3S);
-
-            echo "<p> r3: " . $this->repartitionEquivalente3S . "</p>";
-        }
-        if ($np3 < 5 && $np3 != 0) {
-
-            $this->repartitionEquivalente3S = ($np3 * 2) / $np3;
-
-            echo "<p> ! r3 infrieur a 5: " . $this->repartitionEquivalente3S . "</p>";
-        } else {
-            $this->repartitionEquivalente3S = 0;
-        }
-
-        return $this->repartitionEquivalente1S . $this->repartitionEquivalente2S . $this->repartitionEquivalente3S;
+        return $this->repartitionEquivalente3S;
     }
 }

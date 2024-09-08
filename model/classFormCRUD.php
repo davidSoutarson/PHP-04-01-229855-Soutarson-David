@@ -144,12 +144,16 @@ class FormCRUD
                 echo '<hr>';
 
                 echo '<p>Chois des sports </p>';
-                $generer->calRepartition123S();
 
+                echo  $generer->repE1() . "<br>";
+                echo  $generer->repE2() . "<br>";
+                echo  $generer->repE3() . "<br>";
 
-                /* echo '<hr>';
+                echo '<hr> <hr>';
+
+                echo '<hr>';
                 var_dump($generer);
-                echo '<hr> </br>'; */
+                echo '<hr> </br>';
             }
 
 
