@@ -143,16 +143,16 @@ class FormCRUD
 
                 echo '<hr>';
 
-                echo '<p>?? prochin calcule ?? </p>';
+                echo '<p>Chois des sports </p>';
+                $generer->calRepartition123S();
 
-                echo "<p>" . $generer->repartition01() . "</p>";
 
-
-                echo '<hr> </br>';
+                /* echo '<hr>';
+                var_dump($generer);
+                echo '<hr> </br>'; */
             }
 
-            echo "<hr> <hr> <hr>";
-            var_dump($generer);
+
 
             ##$remplir
 
