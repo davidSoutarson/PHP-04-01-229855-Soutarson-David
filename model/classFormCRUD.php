@@ -145,9 +145,19 @@ class FormCRUD
 
                 echo '<p>Chois des sports </p>';
 
-                echo  $generer->repE1() . "<br>";
-                echo  $generer->repE2() . "<br>";
-                echo  $generer->repE3() . "<br>";
+                echo "<p> Un chois a repartire par sport: " . $generer->repChoi1() . "</p>";
+                echo $generer->repartitionAleatoireChoix1();
+                echo '<hr> ';
+
+                echo "<p> Deux chois a repartire par sport: " . $generer->repChoi2() . "</p>";
+                echo $generer->repartitionAleatoireChoix2();
+                echo '<hr> ';
+
+                echo "<p> Trois chois a repartire par sport: " . $generer->repChoi3() . "</p>";
+                echo $generer->repartitionAleatoireChoix3();
+                echo '<hr> ';
+
+
 
                 echo '<hr> <hr>';
 
