@@ -3,12 +3,21 @@
 Le model gener les requetes, recupére mes donneé et la logique métier  
 (' Requetes,traitement ...)
 
-## MODEL
+## model
 
 - Création, Lecture, Mise à jour, Suppression (CRUD)
 - Logique métier
 - Recuperation des Données
 - Validation, Convertion,Traitement...
+
+## CE docier model Contient les fichier suivant
+
+- classConextionBD.php
+- classCreerBD.php
+- classFomCRUD.PHP
+- classFomDemarage.php
+- comfig.php
+- generData.php
 
 ## Fichier generData
 
@@ -27,7 +36,7 @@ Ce Fichier a pour objectif de générer des données de répartition aléatoire 
 4. **Répartition aléatoire dans les disciplines sportives** : Les sportifs sont répartis dans les disciplines suivantes : boxe, judo, football, natation, cyclisme.
 5. **Répartition équivalente** : Les sportifs sont multipliés par un facteur selon le nombre de sports pratiqués (1, 2 ou 3).
 
-## Utilisation
+### Utilisation
 
 ### 1. Instanciation de la classe `GenerData`
 
