@@ -19,11 +19,11 @@ Le model gener les requetes, recupére mes donneé et la logique métier
 - comfig.php
 - generData.php
 
-## Fichier generData
+## Fichier generData.php
 
 ### Générateur de Données de Répartition de Sportifs
 
-Ce Fichier a pour objectif de générer des données de répartition aléatoire pour des sportifs dans différentes écoles et disciplines sportives. Le script permet de générer le nombre d'élèves et de sportifs, puis de répartir ces sportifs en fonction du nombre de sports qu'ils pratiquent, avec des choix allant de 1 à 3 sports. Ensuite, une répartition aléatoire des sportifs est attribuée aux disciplines sportives.
+Ce fichier a pour objectif de générer des données de répartition aléatoire pour des sportifs dans différentes écoles et disciplines sportives. Le script permet de générer le nombre d'élèves et de sportifs, puis de répartir ces sportifs en fonction du nombre de sports qu'ils pratiquent, avec des choix allant de 1 à 3 sports. Ensuite, une répartition aléatoire des sportifs est attribuée aux disciplines sportives.
 
 ### Fonctionnalités
 
@@ -57,8 +57,8 @@ $generateur = new GenerData($pdo);
 Voici un exemple d'utilisation :
 
 ```php
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', ''); // Connexion à la base de données
-$generateur = new GenerData($pdo);
+
+$generateur = new GenerData($pdo); //(facultatif a modifier selon l'usage)
 
 $generateur->genererNomEcoles();
 $generateur->genererNombreEleves();

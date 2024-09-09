@@ -157,13 +157,11 @@ class FormCRUD
                 echo $generer->repartitionAleatoireChoix3();
                 echo '<hr> ';
 
-
-
                 echo '<hr> <hr>';
 
-                echo '<hr>';
+                /* echo '<hr>';
                 var_dump($generer);
-                echo '<hr> </br>';
+                echo '<hr> </br>'; */
             }
 
 
