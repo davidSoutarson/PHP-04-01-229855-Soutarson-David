@@ -20,9 +20,6 @@ require '../model/generData.php';
 
     if ($pdo instanceof PDO) {
 
-        echo "<p>L'objet \$pdo est correctement initialisé.<p>";
-        echo ' <p class ="success"> Cocnetion a la base de données réucie </P>';
-
         $connexion->creerTables(); // Créer les tables
 
         echo ' <form action="#" method="post">';

@@ -46,8 +46,66 @@ nav ul {
 
 .success {
   border: 1px solid rgb(2, 61, 2);
+  background-color: rgba(167, 238, 14, 0.5);
+  color: green;
+}
+
+.successCreerTable {
+  border: 1px solid rgb(2, 61, 2);
   background-color: rgba(106, 233, 110, 0.5);
   color: green;
+}
+
+.contenerGenererContenue {
+  display: flex;
+  background: rgb(157, 216, 216);
+  padding: 2px;
+}
+
+.creationDeContenue {
+  display: flex;
+  background-color: aquamarine;
+  width: 20%;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-around;
+  word-wrap: break-word;
+}
+
+.creationDeContenue2 {
+  display: flex;
+  background-color: rgb(127, 234, 255);
+  width: 20%;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-around;
+  word-wrap: break-word;
+}
+
+.creationDeContenueChoix {
+  display: flex;
+  background-color: rgb(98, 165, 176);
+  width: 20%;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: space-around;
+  word-wrap: break-word;
+}
+
+.atention {
+  background-color: rgba(255, 131, 0, 1);
+}
+
+.titreCDC {
+  font-size: 0.95em;
+}
+
+#bleux {
+  color: rgb(0, 149, 255);
+}
+
+.info {
+  background-color: rgb(255, 252, 47);
 }
 
 footer {

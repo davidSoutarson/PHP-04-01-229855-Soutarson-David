@@ -16,7 +16,7 @@ class GenerData
     private $nSportifPratiquan2S; // Nombre de sportifs pratiquant 2 sports
     private $nSportifPratiquan3S; // Nombre de sportifs pratiquant 3 sports
 
-    private $lesCinqSports = []; // Les cinq sports disponibles
+    public $lesCinqSports = []; // Les cinq sports disponibles
 
     // Variables pour les répartitions équivalentes
     private $repartitionEquivalente1S;
@@ -24,9 +24,9 @@ class GenerData
     private $repartitionEquivalente3S;
 
     // Tableaux pour la répartition des sportifs dans les sports
-    private $repartitionSports1  = [];
-    private $repartitionSports2  = [];
-    private $repartitionSports3  = [];
+    public $repartitionSports1  = [];
+    public $repartitionSports2  = [];
+    public $repartitionSports3  = [];
 
     /**
      * Constructeur de la classe GenerData
@@ -51,7 +51,7 @@ class GenerData
         $repartitionEquivalente1S = 0,
         $repartitionEquivalente2S = 0,
         $repartitionEquivalente3S = 0,
-        $repartitionSports  = [],
+        $repartitionSports1  = [],
         $repartitionSports2  = [],
         $repartitionSports3  = []
 
@@ -232,7 +232,7 @@ class GenerData
     {
         // Vérifier que la répartition est valide
         if ($repartitionEquivalente <= 0 || empty($repartitionSports)) {
-            echo "<p>Erreur : Répartition invalide ou tableau de sports vide.</p>";
+            echo "<p class='atention' > Répartition invalide ou tableau de sports vide.</p>";
             return;
         }
 
@@ -260,6 +260,8 @@ class GenerData
             echo "<p>{$sport} reçoit {$valeur} sportifs.</p>";
         }
     }
+
+
 
     /**
      * Effectuer la répartition aléatoire pour le choix 1 (pratiquant 1 sport).

@@ -10,7 +10,6 @@ class ConextionBD
     private $pdo;
 
 
-
     // Constructeur de la classe
     public function __construct()
     {
@@ -34,7 +33,7 @@ class ConextionBD
         try {
             // Création de l'objet PDO
             $this->pdo = new PDO($this->dsn, $this->user, $this->password, $this->options);
-            echo "Connexion réussie à la base de données '" . DB_NAME . "'. <br>";
+            echo "<p class ='success'> Connexion réussie à la base de données '" . DB_NAME . "'. </p>";
         } catch (\PDOException $e) {
             // Afficher un message d'erreur personnalisé
             echo "Erreur : Impossible de se connecter à la base de données. Détails : " . $e->getMessage();
@@ -83,21 +82,21 @@ class ConextionBD
             CREATE TABLE IF NOT EXISTS sports (
                 id INT(11) AUTO_INCREMENT PRIMARY KEY,
                 nom_sport ENUM('Boxe', 'Judo', 'Football', 'Natation', 'Cyclisme') NOT NULL,
-                eleve_id INT(11) NOT NULL,
-                FOREIGN KEY (eleve_id) REFERENCES eleves_sportifs(id)
+                ecole_id INT(11) NOT NULL,
+                FOREIGN KEY (ecole_id) REFERENCES eleves_sportifs(id)
             );
         ";
 
         try {
             // Exécution des requêtes SQL
             $this->pdo->exec($sql_ecoles);
-            echo "Table 'ecoles' créée avec succès.<br>";
+            echo "<p class ='successCreerTable'> Table ecoles créée avec succès.</p>";
 
             $this->pdo->exec($sql_nombre_eleves_pratiquan_1_2_3_sports);
-            echo "Table 'nombre_eleves_pratiquan_1_2_3_sports' créée avec succès.<br>";
+            echo "<p class ='successCreerTable'> Table 'nombre_eleves_pratiquan_1_2_3_sports' créée avec succès.</p>";
 
             $this->pdo->exec($sql_sports);
-            echo "Table 'sports' créée avec succès.<br>";
+            echo "<p class ='successCreerTable'> Table sports créée avec succès.</P>";
         } catch (\PDOException $e) {
             echo "Erreur lors de la création des tables : " . $e->getMessage();
         }
