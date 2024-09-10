@@ -73,15 +73,7 @@ class FormCRUD
         return isset($this->data[$index]) ? $this->data[$index] : null;
     }
 
-    /**
-     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Creer ecole
-     */
-    public function nouveau($nouveau)
-    {
-        return $this->p_bt_crudN(
-            '<button id="bt_nouveau" type="submit" name="' . $nouveau . '" value ="' . $this->getValue($nouveau) . '"> Creer ecole </button>'
-        );
-    }
+
     /**
      *@return string utilise la métode: p_bt_creer() entoure en html le bouton Enregistre
      */
@@ -101,18 +93,32 @@ class FormCRUD
         );
     }
 
+
+    /**
+     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Creer ecole
+     */
+    public function nouveau($nouveau)
+    {
+        return $this->p_bt_crudN(
+            '<button id="bt_nouveau" type="submit" name="' . $nouveau . '" value ="' . $this->getValue($nouveau) . '"> Creer ecole </button>'
+        );
+    }
+
     public function crud_VerifNouveau()
     {
         # var_dump($_POST);
 
         if (!empty('nouveau') && isset($_POST['nouveau'])) {
             //cliquer
-            echo "<p> 1 GENERE LES DONER <br> 2 Initialiser la connexion à la base de données <br> 3 remplir Les TABLE  </p>";
+
+            echo "<p> 1 GENERE LES DONER </p>";
+            echo "<p> 2 Initialiser la connexion à la base de données </p>";
+            echo "<p> 3 remplir Les TABLE  </p>";
 
             $connexion = new ConextionBD(); // Initialiser la connexion à la base de données
 
             ## puis la genere
-            echo "<h2> Generer le contenue </h2> <hr>";
+            echo "<h2> Generer le contenue  puis permet son enregistrement en basse de donné </h2> <hr>";
 
             $generer = new GenerData($connexion->getPDO());
 
@@ -163,11 +169,6 @@ class FormCRUD
                 var_dump($generer);
                 echo '<hr> </br>'; */
             }
-
-
-
-            ##$remplir
-
         }
     }
 }
