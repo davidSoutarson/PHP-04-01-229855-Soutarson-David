@@ -2,45 +2,46 @@
 
 /**
  * Class FormCRUD
- * Permet de creer trois Bouton de type submit dans formulaire posts
+ * Permet de créer trois boutons de type submit dans un formulaire pour la gestion CRUD (Créer, Ajouter, Supprimer)
  */
 class FormCRUD
 {
     /**
-     * @var array Données du fomulaire
+     * @var array Données du formulaire
      */
     private $data;
 
-    // etape 1
-
     /**
-     * @var string Balise et class html nouveau
+     * @var string Balise HTML et classe CSS pour le bouton "Nouveau"
      */
     public $tag_p_bt_nouveau = 'p class="p_bt_nouveau"';
+
     /**
-     * @var string Balise et class html ajouter
+     * @var string Balise HTML et classe CSS pour le bouton "Ajouter"
      */
     public $tag_p_bt_ajouter = 'p class="p_bt_ajouter"';
+
     /**
-     * @var string Balise et class html suprimer
+     * @var string Balise HTML et classe CSS pour le bouton "Supprimer"
      */
     public $tag_p_bt_suprimer = 'p class="p_bt_suprimer"';
 
-
     /**
-     * @param array $data Données utiliser par fomulaire crud
+     * Constructeur de la classe FormCRUD
+     * 
+     * @param array $data Données utilisées par le formulaire CRUD (peut être vide par défaut)
      */
     public function __construct($data = array())
     {
         $this->data = $data;
     }
 
-    //etape 2
-
-
     /**
-     *@param $html string code html a entoure uliser dans la métode: nouveau()
-     *@return string 
+     * Méthode privée qui entoure le code HTML fourni pour le bouton "Nouveau"
+     * avec les balises et classes HTML définies.
+     *
+     * @param string $html Code HTML à envelopper
+     * @return string Code HTML avec la balise et la classe "Nouveau" ajoutée
      */
     private function p_bt_crudN($html)
     {
@@ -48,8 +49,11 @@ class FormCRUD
     }
 
     /**
-     *@param $html string code html a entoure uliser dans la métode: ajouter()
-     *@return string 
+     * Méthode privée qui entoure le code HTML fourni pour le bouton "Ajouter"
+     * avec les balises et classes HTML définies.
+     *
+     * @param string $html Code HTML à envelopper
+     * @return string Code HTML avec la balise et la classe "Ajouter" ajoutée
      */
     private function p_bt_crudA($html)
     {
@@ -57,118 +61,109 @@ class FormCRUD
     }
 
     /**
-     *@param $html string code html a entoure uliser dans la métode: suprimer()
-     *@return string 
+     * Méthode privée qui entoure le code HTML fourni pour le bouton "Supprimer"
+     * avec les balises et classes HTML définies.
+     *
+     * @param string $html Code HTML à envelopper
+     * @return string Code HTML avec la balise et la classe "Supprimer" ajoutée
      */
     private function p_bt_crudS($html)
     {
         return "<{$this->tag_p_bt_suprimer}>{$html}</{$this->tag_p_bt_suprimer}>";
     }
 
-
-    //etape 3
-
+    /**
+     * Récupère la valeur associée à une clé spécifique dans les données du formulaire.
+     *
+     * @param string $index Nom de l'index à rechercher dans les données du formulaire
+     * @return mixed Valeur associée à l'index, ou null si l'index n'existe pas
+     */
     private function getValue($index)
     {
         return isset($this->data[$index]) ? $this->data[$index] : null;
     }
 
-
     /**
-     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Enregistre
+     * Crée et retourne un bouton HTML pour ajouter une nouvelle école,
+     * en utilisant la méthode p_bt_crudA pour envelopper le bouton.
+     *
+     * @return string Code HTML pour le bouton "Ajouter"
      */
-    public function ajouter()
+    public function ajouter($ajouter)
     {
         return $this->p_bt_crudA(
-            '<button id="bt_ajouter" type="submit" name="ajouter" value ="ajouter"> Enregistre ecole </button>'
+            '<button id="bt_ajouter" type="submit" name="' . $ajouter . '" value="' . $this->getValue($ajouter) . '"> Ajout école => BD  </button>'
         );
     }
+
     /**
-     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Suprimer
+     * Crée et retourne un bouton HTML pour supprimer une école,
+     * en utilisant la méthode p_bt_crudS pour envelopper le bouton.
+     *
+     * @return string Code HTML pour le bouton "Supprimer"
      */
     public function suprimer()
     {
         return $this->p_bt_crudS(
-            '<button id="bt_suprimer" type="submit" name="suprimer" value ="suprimer"> Suprimer ecole </button>'
+            '<button id="bt_suprimer" type="submit" name="suprimer" value="suprimer"> Supprimer école </button>'
         );
     }
 
-
     /**
-     *@return string utilise la métode: p_bt_creer() entoure en html le bouton Creer ecole
+     * Crée et retourne un bouton HTML pour créer une nouvelle école,
+     * en utilisant la méthode p_bt_crudN pour envelopper le bouton.
+     *
+     * @param string $nouveau Clé spécifique à utiliser pour récupérer une valeur dans les données du formulaire
+     * @return string Code HTML pour le bouton "Nouveau"
      */
     public function nouveau($nouveau)
     {
         return $this->p_bt_crudN(
-            '<button id="bt_nouveau" type="submit" name="' . $nouveau . '" value ="' . $this->getValue($nouveau) . '"> Creer ecole </button>'
+            '<button id="bt_nouveau" type="submit" name="' . $nouveau . '" value="' . $this->getValue($nouveau) . '"> Créer école </button>'
         );
     }
 
+    /**
+     * Vérifie si un formulaire de création d'une nouvelle école a été soumis.
+     * Si le formulaire a été soumis, initialise la connexion à la base de données
+     * et génère les données des écoles à enregistrer dans la base.
+     */
     public function crud_VerifNouveau()
     {
-        # var_dump($_POST);
-
+        // Vérifie si le formulaire "nouveau" a été soumis
         if (!empty('nouveau') && isset($_POST['nouveau'])) {
-            //cliquer
+            echo "<p> 1. GÉNÉRER LES DONNÉES </p>";
+            echo "<p> 2. Initialiser la connexion à la base de données </p>";
+            // Initialise la connexion à la base de données
+            $connexion = new ConextionBD();
 
-            echo "<p> 1 GENERE LES DONER </p>";
-            echo "<p> 2 Initialiser la connexion à la base de données </p>";
-            echo "<p> 3 remplir Les TABLE  </p>";
 
-            $connexion = new ConextionBD(); // Initialiser la connexion à la base de données
+            // Initialise la classe de gestion des écoles pour générer les données
+            $gestionEcole = new GestionEcole($connexion);
+            $gestionEcole->genererDonnees();
+        }
+    }
 
-            ## puis la genere
-            echo "<h2> Generer le contenue  puis permet son enregistrement en basse de donné </h2> <hr>";
 
-            $generer = new GenerData($connexion->getPDO());
+    public function crud_VerifAjouter()
+    {
+        // Vérifie si le formulaire "nouveau" a été soumis
+        if (!empty('ajouter') && isset($_POST['ajouter'])) {
+            // Initialise la connexion à la base de données
+            $connexion = new ConextionBD();
+            $pdo = $connexion->getPDO();
+            echo "<p> 3. Remplir les tables </p>";
+            //nouvel verification ci donner Exite?
 
-            $nomEcoles = $generer->genererNomEcoles();
-
-            foreach ($nomEcoles as $key => $value) {
-
-                echo "<p> contenue Table: ecoles: </p> <p> nom_ecole: " . $value . "<p>";
-                $nombre_eleves = $generer->genererNombreEleves();
-                echo "<p> nombre_eleves: " . $nombre_eleves . "<p>"; #teste
-
-                $nombre_sportifs = $generer->genererNombreDeSportif();
-                echo "<p> nombre_sportifs: " . $nombre_sportifs . "<p>"; #teste
-
-                echo '<hr> ';
-
-                // ----------------------
-                echo "<p> contenue Table: nombre_eleves_pratiquan_1_2_3_sports: </p>";
-
-                $nElevePrati_1_Sport = $generer->genererSportifPratiquan1S();
-                echo "<p> nombre éléves pratiquan 1 sport: " . $nElevePrati_1_Sport . "<p>"; #teste
-
-                $nElevePrati_2_Sport = $generer->genererSportifPratiquan2S();
-                echo "<p> nombre éléves pratiquan 2 sport: " . $nElevePrati_2_Sport . "<p>"; #teste
-
-                $nElevePrati_3_Sport = $generer->genererSportifPratiquan3S();
-                echo "<p> nombre éléves pratiquan 3 sport: " . $nElevePrati_3_Sport . "<p>"; #teste
-
-                echo '<hr>';
-
-                echo '<p>Chois des sports </p>';
-
-                echo "<p> Un chois a repartire par sport: " . $generer->repChoi1() . "</p>";
-                echo $generer->repartitionAleatoireChoix1();
-                echo '<hr> ';
-
-                echo "<p> Deux chois a repartire par sport: " . $generer->repChoi2() . "</p>";
-                echo $generer->repartitionAleatoireChoix2();
-                echo '<hr> ';
-
-                echo "<p> Trois chois a repartire par sport: " . $generer->repChoi3() . "</p>";
-                echo $generer->repartitionAleatoireChoix3();
-                echo '<hr> ';
-
-                echo '<hr> <hr>';
-
-                /* echo '<hr>';
-                var_dump($generer);
-                echo '<hr> </br>'; */
+            if ($pdo instanceof PDO) {
+                echo "<p> CONNEXION OK </p>";
+                $connexion->ce_conecter_bd();
+                echo "<p> ECRITURE DES DONNER EN COUR </p>";
+            } else {
+                echo "<p>L'objet \$pdo n'est pas correctement initialisé.<p>";
             }
+        } else {
+            echo "<p>mesasage Echeque envoie data <p>";
         }
     }
 }

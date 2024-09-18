@@ -3,6 +3,7 @@ require "header.php";
 require "menu.php";
 require "../model/classConextionBD.php";
 require "../model/classFormCRUD.php";
+require "../model/classGetiontonEcole.php";
 #----------------------------------
 require '../model/generData.php';
 ?>
@@ -28,8 +29,11 @@ require '../model/generData.php';
 
         echo  $formCRUD->nouveau('nouveau');
 
-        echo '</form>';
+        $formCRUD->ajouter('ajouter');
+
+
         $formCRUD->crud_VerifNouveau();
+        $formCRUD->crud_VerifAjouter();
     } else {
         echo "<p>L'objet \$pdo n'est pas correctement initialisé.<p>";
     }

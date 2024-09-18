@@ -81,7 +81,7 @@ class ConextionBD
         $sql_sports = "
             CREATE TABLE IF NOT EXISTS sports (
                 id INT(11) AUTO_INCREMENT PRIMARY KEY,
-                nom_sport ENUM('Boxe', 'Judo', 'Football', 'Natation', 'Cyclisme') NOT NULL,
+                nom_sport VARCHAR(20) NOT NULL,
                 ecole_id INT(11) NOT NULL,
                 FOREIGN KEY (ecole_id) REFERENCES eleves_sportifs(id)
             );

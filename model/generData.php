@@ -10,7 +10,7 @@ class GenerData
     // Propriétés privées pour stocker les données
     private $pdo; // Connexion à la base de données
     private $nomEcoles; // Noms des écoles
-    private $nombreEleves; // Nombre d'eleve dans chaque école
+    private $nombreEleves; // Nombre d'élèves dans chaque école
     private $nomberDeSportifs; // Nombre total de sportifs dans une école
     private $nSportifPratiquan1S; // Nombre de sportifs pratiquant 1 seul sport
     private $nSportifPratiquan2S; // Nombre de sportifs pratiquant 2 sports
@@ -38,7 +38,6 @@ class GenerData
      * @param int $nSportifPratiquan2S : nombre de sportifs pratiquant 2 sports
      * @param int $nSportifPratiquan3S : nombre de sportifs pratiquant 3 sports
      */
-
     public function __construct(
         $pdo,
         $nomEcoles = [],
@@ -54,7 +53,6 @@ class GenerData
         $repartitionSports1  = [],
         $repartitionSports2  = [],
         $repartitionSports3  = []
-
     ) {
         // Initialisation des propriétés
         $this->pdo = $pdo;
@@ -74,29 +72,9 @@ class GenerData
         $this->repartitionEquivalente3S = $repartitionEquivalente3S;
 
         // Répartition des sportifs dans les sports pour chaque choix
-        $this->repartitionSports1  = [
-            'boxe' => 0,
-            'judo' => 0,
-            'football' => 0,
-            'natation' => 0,
-            'cyclisme' => 0
-        ];
-
-        $this->repartitionSports2  = [
-            'boxe' => 0,
-            'judo' => 0,
-            'football' => 0,
-            'natation' => 0,
-            'cyclisme' => 0
-        ];
-
-        $this->repartitionSports3  = [
-            'boxe' => 0,
-            'judo' => 0,
-            'football' => 0,
-            'natation' => 0,
-            'cyclisme' => 0
-        ];
+        $this->repartitionSports1  = array_fill_keys($this->lesCinqSports, 0);
+        $this->repartitionSports2  = array_fill_keys($this->lesCinqSports, 0);
+        $this->repartitionSports3  = array_fill_keys($this->lesCinqSports, 0);
     }
 
     /**
@@ -105,13 +83,8 @@ class GenerData
      */
     public function genererNomEcoles()
     {
-
         $nomEcole = ['A', 'B', 'C'];
-
-        for ($n = 0; $n < count($nomEcole); $n++) {
-
-            $this->nomEcoles[] = $nomEcole[$n];
-        }
+        $this->nomEcoles = array_merge($this->nomEcoles, $nomEcole);
         return $this->nomEcoles;
     }
 
@@ -131,12 +104,12 @@ class GenerData
      */
     public function genererNombreDeSportif()
     {
-        $this->nomberDeSportifs = rand(0, $this->nombreEleves); // gener le nombre de sportif par rapor au nonbre d'éleve
+        $this->nomberDeSportifs = rand(0, $this->nombreEleves); // générer le nombre de sportifs par rapport au nombre d'élèves
         return $this->nomberDeSportifs;
     }
 
     /**
-     * Générer un nombre aléatoire de sportifs par rapport au nombre d'élèves.
+     * Générer un nombre aléatoire de sportifs pratiquant 1 sport.
      * @return int Le nombre de sportifs généré
      */
     public function genererSportifPratiquan1S()
@@ -166,7 +139,6 @@ class GenerData
         return $this->nSportifPratiquan3S;
     }
 
-
     /**
      * Fonction privée pour calculer la répartition équivalente.
      * @param int $np Nombre de sportifs
@@ -175,21 +147,8 @@ class GenerData
      */
     private function calMulti($np, $multiplicateur)
     {
-        if ($np >= 5 && $np != 0) {
-            $repartitionEquivalente = $np * $multiplicateur;
-            $result = $repartitionEquivalente;
-
-            return $result;
-        } elseif ($np < 5 && $np != 0) {
-            $result = $np * $multiplicateur;
-
-            return $result;
-        } else {
-            return 0;
-        }
+        return ($np > 0) ? $np * $multiplicateur : 0;
     }
-
-    // Utilisation de la fonction calMulti pour calculer les répartitions équivalentes
 
     /**
      * Calculer la répartition pour les sportifs pratiquant 1 sport.
@@ -218,7 +177,6 @@ class GenerData
     public function repChoi3()
     {
         $this->repartitionEquivalente3S = $this->calMulti($this->nSportifPratiquan3S, 3);
-
         return $this->repartitionEquivalente3S;
     }
 
@@ -230,7 +188,6 @@ class GenerData
      */
     private function attribuerRepartitionAleatoireTousSports($repartitionEquivalente, &$repartitionSports)
     {
-        // Vérifier que la répartition est valide
         if ($repartitionEquivalente <= 0 || empty($repartitionSports)) {
             echo "<p class='atention' > Répartition invalide ou tableau de sports vide.</p>";
             return;
@@ -242,13 +199,8 @@ class GenerData
 
         // Répartition aléatoire initiale pour chaque sport
         for ($i = 0; $i < $nombreSports - 1; $i++) {
-            // Attribuer une valeur aléatoire entre 0 et le total restant
             $repartitionAleatoire = mt_rand(0, $total);
-
-            // Ajouter la répartition aléatoire au sport courant
             $repartitionSports[$sports[$i]] += $repartitionAleatoire;
-
-            // Réduire le total restant
             $total -= $repartitionAleatoire;
         }
 
@@ -256,12 +208,11 @@ class GenerData
         $repartitionSports[$sports[$nombreSports - 1]] += $total;
 
         // Afficher la répartition des sportifs pour chaque sport
+
         foreach ($repartitionSports as $sport => $valeur) {
             echo "<p>{$sport} reçoit {$valeur} sportifs.</p>";
         }
     }
-
-
 
     /**
      * Effectuer la répartition aléatoire pour le choix 1 (pratiquant 1 sport).
@@ -269,7 +220,6 @@ class GenerData
      */
     public function repartitionAleatoireChoix1()
     {
-        // Appeler pour la première répartition
         $this->attribuerRepartitionAleatoireTousSports($this->repartitionEquivalente1S, $this->repartitionSports1);
     }
 
@@ -279,7 +229,6 @@ class GenerData
      */
     public function repartitionAleatoireChoix2()
     {
-        // Appeler pour la deuxième répartition
         $this->attribuerRepartitionAleatoireTousSports($this->repartitionEquivalente2S, $this->repartitionSports2);
     }
 
@@ -289,7 +238,12 @@ class GenerData
      */
     public function repartitionAleatoireChoix3()
     {
-        // Appeler pour la troisième répartition
         $this->attribuerRepartitionAleatoireTousSports($this->repartitionEquivalente3S, $this->repartitionSports3);
+    }
+
+    public function nomSport()
+    {
+        $nomSport = $this->lesCinqSports = ['boxe', 'judo', 'football', 'natation', 'cyclisme'];
+        return $nomSport;
     }
 }
